@@ -4,7 +4,9 @@ public enum InventoryItemType
 {
     NONE,
     CLOCK,
-    PIZZA
+    PIZZA,
+    SPIDER,
+    FSIT
 }
 
 public interface PickUpAble

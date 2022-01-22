@@ -13,13 +13,14 @@ public class DialogueView : SingletonMono<DialogueView>
     [TextArea]
     [SerializeField] private string[] m_SampleText;
     [SerializeField] private BoolVariable m_IsDialogueOpen;
+    [SerializeField] private Transform m_CatTransform;
 
     private Vector3 m_FullSizeScale;
     [Header("Animation variables")] [SerializeField] private float m_DurationOfScaleUp = 0.2f;
-     [SerializeField] private Ease m_EaseOfScaleUp = Ease.InBack;
-     [SerializeField] private Ease m_EaseOfScaleDown = Ease.OutBack;
-     [SerializeField] private float m_DurationOfScaleDown = 0.3f;
-     [SerializeField] private Vector3 m_OffsetOfBubble = new Vector3(-2 , -2 , 0);
+    [SerializeField] private Ease m_EaseOfScaleUp = Ease.InBack;
+    [SerializeField] private Ease m_EaseOfScaleDown = Ease.OutBack;
+    [SerializeField] private float m_DurationOfScaleDown = 0.3f;
+    [SerializeField] private Vector3 m_OffsetOfBubble = new Vector3(-2 , -2 , 0);
 
     //During animation vars
     private Action m_OnFinishDialogue;
@@ -83,6 +84,16 @@ public class DialogueView : SingletonMono<DialogueView>
         StartCoroutine(TypeMachineText(m_TextsToPlay[m_CurrentTextIndex]));
     }
 
+    public void PlayGenericCantDoAnythingDialogue()
+    {
+        PlayDialogueOnCat(new []{"No use of this here"} , null);
+    }
+
+    public void PlayDialogueOnCat(string[] text, Action onFinishDialogue)
+    {
+        PlayDialogueText(text , onFinishDialogue , m_CatTransform.position);
+    }
+
     public void PlayDialogueText(string[] text , Action onFinishDialogue , Vector3 positionOfObject)
     {
         Debug.Log("Play dialogue");
@@ -105,6 +116,7 @@ public class DialogueView : SingletonMono<DialogueView>
             m_DialogueBox.transform.position = new Vector3(m_DialogueBox.transform.position.x, m_MaxY,
                 m_DialogueBox.transform.position.z);
         }
+        /*
         if (m_DialogueBox.transform.position.x > m_MaxX)
         {
             m_DialogueBox.transform.position = new Vector3(m_MaxX, m_DialogueBox.transform.position.y,
@@ -115,6 +127,7 @@ public class DialogueView : SingletonMono<DialogueView>
             m_DialogueBox.transform.position = new Vector3(m_MinX, m_DialogueBox.transform.position.y,
                 m_DialogueBox.transform.position.z);
         }
+        */
     }
 
     private IEnumerator TypeMachineText(string text)

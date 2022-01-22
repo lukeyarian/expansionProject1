@@ -3,16 +3,16 @@
 public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
 {
     [TextArea]
-    [SerializeField] private string[] m_DefaultDialogue;
-    [SerializeField] private string[] m_FantasyDialogue;
+    [SerializeField] protected string[] m_DefaultDialogue;
+    [SerializeField] protected string[] m_FantasyDialogue;
     [SerializeField] protected string[] m_SpecialDialoguesForInteractSuccessful;
     
-    [SerializeField] private InventoryItemType m_ItemItWantsForInteract;
-    [SerializeField] private InventoryItemData m_InventoryItemThisCharacterCanGive;
-    [SerializeField] private bool m_ItemShouldBeGivenOnDefaultDialogue;
+    [SerializeField] protected InventoryItemType m_ItemItWantsForInteract;
+    [SerializeField] protected InventoryItemData m_InventoryItemThisCharacterCanGive;
+    [SerializeField] protected bool m_ItemShouldBeGivenOnDefaultDialogue;
     
-    private BoolVariable m_CanPlayerMove;
-    private BoolVariable m_DialogueIsShowing;
+    protected BoolVariable m_CanPlayerMove;
+    protected BoolVariable m_DialogueIsShowing;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
         m_DialogueIsShowing = Resources.Load<BoolVariable>("IsDialogueOpen");
     }
     
-    public void Interact()
+    public virtual void Interact()
     {
         StartDialogue(WorldChangeController.Instance.IsNormalWorld? m_DefaultDialogue : m_FantasyDialogue , true);
     }
