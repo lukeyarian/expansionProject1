@@ -13,7 +13,7 @@ public class FollowCat : MonoBehaviour
 
     void Awake()
     {
-        Target = GameObject.Find("catowo").GetComponent<Transform>();
+        Target = GameObject.Find("Cat").GetComponent<Transform>();
         roomW = GameObject.Find("Room").GetComponent<Renderer>().bounds.extents.x;
         roomH = GameObject.Find("Room").GetComponent<Renderer>().bounds.extents.y;
         camBoxH = GetComponent<Camera>().orthographicSize;
