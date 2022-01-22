@@ -8,15 +8,12 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
     protected override void FinishDialogue(bool isDefault)
     {
         base.FinishDialogue(isDefault);
-        Debug.Log("Finish dialogue of door");
         if (isDefault && !WorldChangeController.Instance.IsNormalWorld)
         {
-            Debug.Log("Finish dialogue of door on normal world");
             EventConditionBooleans.HasUserTalkedToDoorOnFirstRoom = true;
         }
         else
         {
-            Debug.Log("Finish dialogue of door on fake world and did interact: " + m_DidInteractWithClock);
             if (m_DidInteractWithClock)
             {
                 m_ColliderToDestroyToAllowPlayerToMove.enabled = false;
@@ -26,7 +23,7 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
 
     public override void InteractWithItem(InventoryItemType incomingItemType)
     {
-        if(incomingItemType.Equals(InventoryItemType.CLOCK))
+        if(incomingItemType.Equals(InventoryItemType.CLOCK) && !WorldChangeController.Instance.IsNormalWorld)
         {
             EventConditionBooleans.HasUsedTheClock = true;
             GameEventSystem.Current.RemoveInventoryItem(incomingItemType);
