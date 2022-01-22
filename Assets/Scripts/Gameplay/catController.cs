@@ -6,7 +6,7 @@ public class catController : MonoBehaviour
 {
     [SerializeField] [Range(1f, 10f)] float sideMov = 5f;
     [SerializeField] [Range(1f, 5f)] float jForce = 5f;
-    bool leftReq, rightReq, jumpReq, canJump = false;
+    bool leftReq, rightReq, jumpReq, canJump = false, faceL = true;
 
 
     void Awake()
@@ -22,6 +22,11 @@ public class catController : MonoBehaviour
         if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {
             leftReq = true;
+            if(!faceL)
+            {
+                faceL = true;
+                transform.Rotate(new Vector3(0, 180f, 0));
+            }   
         }
         else
         {
@@ -30,6 +35,11 @@ public class catController : MonoBehaviour
         if(Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
         {
             rightReq = true;
+            if(faceL)
+            {
+                faceL = false;
+                transform.Rotate(new Vector3(0, 180f, 0));
+            }
         }
         else
         {
@@ -43,7 +53,6 @@ public class catController : MonoBehaviour
         {
             jumpReq = false;
         }
-        
     }
 
     void FixedUpdate()
