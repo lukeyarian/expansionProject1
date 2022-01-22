@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class InteractableItemWithDialogue : MonoBehaviour
+public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    [TextArea]
+    public string[] DialogueToShow;
+
+    private BoolVariable m_CanPlayerMove;
+
+    private void Start()
     {
-        
+        m_CanPlayerMove = Resources.Load<BoolVariable>("CanPlayerMove");
+    }
+    
+    public void Interact()
+    {
+        if (DialogueToShow == null || DialogueToShow.Length == 0) return;
+        StartDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void StartDialogue()
     {
-        
+        m_CanPlayerMove.Value = true;
+    }
+
+    private void FinishDialogue()
+    {
+        m_CanPlayerMove.Value = false;
     }
 }
