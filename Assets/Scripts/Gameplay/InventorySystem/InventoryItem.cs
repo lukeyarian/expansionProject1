@@ -7,24 +7,16 @@ public enum InventoryItemType
     PIZZA
 }
 
-public interface IPickable
+public interface PickUpAble
 {
     bool CanBePickedUp();
-    InventoryItemType TypeOfItem { get; }
+    InventoryItemData ItemData { get; }
 }
 
-public abstract class InventoryItem : MonoBehaviour , IPickable
+public abstract class InventoryItem : MonoBehaviour , PickUpAble
 {
-    public InventoryItemType InventoryItemType;
-    public InventoryItemType TypeOfItem => InventoryItemType;
+    public InventoryItemData InventoryItemData;
 
     public abstract bool CanBePickedUp();
-}
-
-public class ClockItem : InventoryItem
-{
-    public override bool CanBePickedUp()
-    {
-        return EventConditionBooleans.HasUserTalkedToDoorOnFirstRoom;
-    }
+    public InventoryItemData ItemData => InventoryItemData;
 }

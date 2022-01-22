@@ -1,16 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class InventoryController : SingletonMono<InventoryController>
 {
-    [SerializeField] private InventoryItemType[] ItemsInInventory;
+    [SerializeField] private List<InventoryItemType> m_ItemsInInventory = new List<InventoryItemType>();
     [SerializeField] private InventoryItemType m_LastItemClickedOnUI;
     [SerializeField] private BoolVariable m_IsShowingDialogue;
 
-    private void Update()
+    private void Start()
     {
-        if (m_IsShowingDialogue.Value) return;
-        if (Input.GetMouseButtonDown(0))
-        {
-        }
+        GameEventSystem.Current.OnAddItemToInventory += AddItemToInventory;
+    }
+
+    private void AddItemToInventory(InventoryItemData inventoryItemData)
+    {
+        GiveItemToPlayer(inventoryItemData.ItemType);
+    }
+
+    public void GiveItemToPlayer(InventoryItemType item)
+    {
+        m_ItemsInInventory.Add(item);
     }
 }

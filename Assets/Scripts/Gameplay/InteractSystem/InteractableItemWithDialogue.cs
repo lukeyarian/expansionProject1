@@ -6,6 +6,8 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     [SerializeField] private string[] m_DefaultDialogue;
     [SerializeField] private string[] m_SpecialDialoguesForInteractSuccessful;
     [SerializeField] private InventoryItemType m_ItemItWantsForInteract;
+    [SerializeField] private InventoryItemData m_InventoryItemThisCharacterCanGive;
+    [SerializeField] private bool m_ItemShouldBeGivenOnDefaultDialogue;
     
     private BoolVariable m_CanPlayerMove;
     private BoolVariable m_DialogueIsShowing;
@@ -18,26 +20,31 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     
     public void Interact()
     {
-        StartDialogue(m_DefaultDialogue);
+        StartDialogue(m_DefaultDialogue , true);
     }
 
     public void InteractWithItem(InventoryItemType incomingItemType)
     {
         if (incomingItemType == m_ItemItWantsForInteract && incomingItemType != InventoryItemType.NONE)
         {
-            StartDialogue(m_SpecialDialoguesForInteractSuccessful);
+            StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
         }
     }
 
-    private void StartDialogue(string[] dialogueToUse)
+    private void StartDialogue(string[] dialogueToUse , bool isDefault)
     {
-        if (m_DefaultDialogue == null || m_DefaultDialogue.Length == 0 ||  m_DialogueIsShowing.Value) return;
+        Debug.Log("START DIALOGUE");
+        if (dialogueToUse == null || dialogueToUse.Length == 0 ||  m_DialogueIsShowing.Value) return;
         m_CanPlayerMove.Value = false;
-        DialogueView.Instance.PlayDialogueText(dialogueToUse, FinishDialogue , transform.position);
+        DialogueView.Instance.PlayDialogueText(dialogueToUse, ()=>FinishDialogue(isDefault) , transform.position);
     }
 
-    private void FinishDialogue()
+    protected virtual void FinishDialogue(bool isDefault)
     {
         m_CanPlayerMove.Value = true;
+        if (m_InventoryItemThisCharacterCanGive != null && m_ItemShouldBeGivenOnDefaultDialogue == isDefault)
+        {
+            GameEventSystem.Current.AddItemToPlayerInventory(m_InventoryItemThisCharacterCanGive);
+        }
     }
 }
