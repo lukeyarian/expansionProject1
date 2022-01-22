@@ -12,8 +12,15 @@ public class BottomRightBarItemsView : MonoBehaviour
     private void Start()
     {
         GameEventSystem.Current.OnAddItemToInventory += AddItemOnView;
+        GameEventSystem.Current.OnRemoveInventoryItem += RemoveItemFromView;
     }
 
+    private void RemoveItemFromView(InventoryItemType type)
+    {
+        Destroy(m_ItemTypeToView[type]);
+        m_ItemTypeToView.Remove(type);
+    }
+    
     private void AddItemOnView(InventoryItemData inventoryItem)
     {
         var instantiatedView = Instantiate(m_PrefabOfItem, m_ParentLayoutTransform);

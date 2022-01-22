@@ -4,6 +4,7 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
 {
     [SerializeField] private BoxCollider2D m_ColliderToDestroyToAllowPlayerToMove;
     private bool m_DidInteractWithClock = false;
+    
     protected override void FinishDialogue(bool isDefault)
     {
         base.FinishDialogue(isDefault);
@@ -27,6 +28,8 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
     {
         if(incomingItemType.Equals(InventoryItemType.CLOCK))
         {
+            EventConditionBooleans.HasUsedTheClock = true;
+            GameEventSystem.Current.RemoveInventoryItem(incomingItemType);
             m_DidInteractWithClock = true;
             StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
         }

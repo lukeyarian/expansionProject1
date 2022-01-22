@@ -6,4 +6,5 @@
 public static class EventConditionBooleans
 {
     public static bool HasUserTalkedToDoorOnFirstRoom = false;
+    public static bool HasUsedTheClock = false;
 }

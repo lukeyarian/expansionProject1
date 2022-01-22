@@ -17,9 +17,9 @@ public class GameEventSystem : MonoBehaviour
         OnAddItemToInventory?.Invoke(inventoryItemType);
     }
     
-    public event Action<InventoryItemData> OnRemoveInventoryItem;
+    public event Action<InventoryItemType> OnRemoveInventoryItem;
 
-    public void RemoveInventoryItem(InventoryItemData inventoryItemType)
+    public void RemoveInventoryItem(InventoryItemType inventoryItemType)
     {
         OnRemoveInventoryItem?.Invoke(inventoryItemType);
     }

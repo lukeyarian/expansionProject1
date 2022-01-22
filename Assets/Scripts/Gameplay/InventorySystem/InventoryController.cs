@@ -10,12 +10,18 @@ public class InventoryController : SingletonMono<InventoryController>
     private void Start()
     {
         GameEventSystem.Current.OnAddItemToInventory += AddItemToInventory;
+        GameEventSystem.Current.OnRemoveInventoryItem += RemoveItemFromInventory;
         GameEventSystem.Current.OnSetCurrentlySelectedInventoryItem += item =>LastItemClickedOnUI = item;
     }
 
     private void AddItemToInventory(InventoryItemData inventoryItemData)
     {
         GiveItemToPlayer(inventoryItemData.ItemType);
+    }
+    
+    private void RemoveItemFromInventory(InventoryItemType inventoryItemData)
+    {
+        m_ItemsInInventory.Remove(inventoryItemData);
     }
 
     public void GiveItemToPlayer(InventoryItemType item)

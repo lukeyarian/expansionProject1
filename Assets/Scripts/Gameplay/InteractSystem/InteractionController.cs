@@ -35,7 +35,7 @@ public class InteractionController : SingletonMono<InteractionController>
                 var pickablePickedUp = hit.collider.GetComponent<PickUpAble>();
                 if (pickablePickedUp != null && interactableClicked == null && !m_OnDialogue.Value && pickablePickedUp.CanBePickedUp())
                 {
-                    GameEventSystem.Current.AddItemToPlayerInventory(pickablePickedUp.ItemData);
+                    GameEventSystem.Current.AddItemToPlayerInventory(pickablePickedUp.PickUpItem());
                 }
             }
             InventoryController.Instance.LastItemClickedOnUI = null;

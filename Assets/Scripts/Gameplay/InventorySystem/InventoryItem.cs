@@ -10,7 +10,7 @@ public enum InventoryItemType
 public interface PickUpAble
 {
     bool CanBePickedUp();
-    InventoryItemData ItemData { get; }
+    InventoryItemData PickUpItem();
 }
 
 public abstract class InventoryItem : MonoBehaviour , PickUpAble
@@ -18,5 +18,8 @@ public abstract class InventoryItem : MonoBehaviour , PickUpAble
     public InventoryItemData InventoryItemData;
 
     public abstract bool CanBePickedUp();
-    public InventoryItemData ItemData => InventoryItemData;
+    public virtual InventoryItemData PickUpItem()
+    {
+        return InventoryItemData;
+    }
 }
