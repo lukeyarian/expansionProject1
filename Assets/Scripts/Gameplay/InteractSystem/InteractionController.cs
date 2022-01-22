@@ -4,6 +4,7 @@ public class InteractionController : SingletonMono<InteractionController>
 {
     private bool m_AlreadyInteracting = false;
     [SerializeField] private BoolVariable m_OnDialogue;
+    [SerializeField] private BoolVariable m_OnTryingToUseItem ;
     
     void Update()
     {
@@ -14,8 +15,20 @@ public class InteractionController : SingletonMono<InteractionController>
             
             if(hit.collider != null)
             {
-                var interactableClicked = hit.collider.GetComponent<IINteractable>();
-                interactableClicked?.Interact();
+                IINteractable interactableClicked = null;
+                if (InventoryController.Instance.LastItemClickedOnUI == null)
+                {
+                    Debug.Log("INteract simple");
+                    interactableClicked = hit.collider.GetComponent<IINteractable>();
+                    interactableClicked?.Interact();
+                }
+                else
+                {
+                    Debug.Log("INteract with item");
+                    interactableClicked = hit.collider.GetComponent<IINteractable>();
+                    interactableClicked?.InteractWithItem(InventoryController.Instance.LastItemClickedOnUI.ItemType);
+                }
+
                 
                 var pickablePickedUp = hit.collider.GetComponent<PickUpAble>();
                 if (pickablePickedUp != null && interactableClicked == null && !m_OnDialogue.Value && pickablePickedUp.CanBePickedUp())
@@ -23,6 +36,7 @@ public class InteractionController : SingletonMono<InteractionController>
                     GameEventSystem.Current.AddItemToPlayerInventory(pickablePickedUp.ItemData);
                 }
             }
+            InventoryController.Instance.LastItemClickedOnUI = null;
         }
     }
 }

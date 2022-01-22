@@ -4,12 +4,13 @@ using UnityEngine;
 public class InventoryController : SingletonMono<InventoryController>
 {
     [SerializeField] private List<InventoryItemType> m_ItemsInInventory = new List<InventoryItemType>();
-    [SerializeField] private InventoryItemType m_LastItemClickedOnUI;
+    public InventoryItemData LastItemClickedOnUI;
     [SerializeField] private BoolVariable m_IsShowingDialogue;
 
     private void Start()
     {
         GameEventSystem.Current.OnAddItemToInventory += AddItemToInventory;
+        GameEventSystem.Current.OnSetCurrentlySelectedInventoryItem += item =>LastItemClickedOnUI = item;
     }
 
     private void AddItemToInventory(InventoryItemData inventoryItemData)

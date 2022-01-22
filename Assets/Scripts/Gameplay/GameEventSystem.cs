@@ -24,9 +24,9 @@ public class GameEventSystem : MonoBehaviour
         OnRemoveInventoryItem?.Invoke(inventoryItemType);
     }
     
-    public event Action<InventoryItemType> OnSetCurrentlySelectedInventoryItem;
+    public event Action<InventoryItemData> OnSetCurrentlySelectedInventoryItem;
 
-    public void SetCurrentlySelectedInventoryItem(InventoryItemType inventoryItemType)
+    public void SetCurrentlySelectedInventoryItem(InventoryItemData inventoryItemType)
     {
         OnSetCurrentlySelectedInventoryItem?.Invoke(inventoryItemType);
     }

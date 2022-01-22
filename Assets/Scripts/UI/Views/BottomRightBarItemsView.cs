@@ -19,6 +19,6 @@ public class BottomRightBarItemsView : MonoBehaviour
         var instantiatedView = Instantiate(m_PrefabOfItem, m_ParentLayoutTransform);
         m_ItemTypeToView.Add(inventoryItem.ItemType, instantiatedView);
         var viewOfItem = instantiatedView.GetComponent<PickedUpItemView>();
-        viewOfItem.SetView(inventoryItem.ItemImageOnUI , ()=>GameEventSystem.Current.SetCurrentlySelectedInventoryItem(inventoryItem.ItemType));
+        viewOfItem.SetView(inventoryItem.ItemImageOnUI , ()=>GameEventSystem.Current.SetCurrentlySelectedInventoryItem(inventoryItem));
     }
 }

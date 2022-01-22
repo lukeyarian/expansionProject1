@@ -5,6 +5,7 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     [TextArea]
     [SerializeField] private string[] m_DefaultDialogue;
     [SerializeField] private string[] m_SpecialDialoguesForInteractSuccessful;
+    
     [SerializeField] private InventoryItemType m_ItemItWantsForInteract;
     [SerializeField] private InventoryItemData m_InventoryItemThisCharacterCanGive;
     [SerializeField] private bool m_ItemShouldBeGivenOnDefaultDialogue;
