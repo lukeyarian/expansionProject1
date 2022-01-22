@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Text;
 using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
@@ -8,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class DialogueView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI m_DialogueText;
+    [SerializeField] private TextMeshPro m_DialogueText;
     [SerializeField] private Transform m_DialogueBox;
     [TextArea]
     [SerializeField] private string[] m_SampleText;
@@ -17,26 +16,32 @@ public class DialogueView : MonoBehaviour
     private string[] m_TextsToPlay;
     private int m_CurrentTextIndex;
     private bool m_IsAnimatingText;
+
+    private Vector3 m_FullSizeScale;
+    [Header("Animation variables")] [SerializeField] private float m_DurationOfScaleUp = 0.2f;
+    [Header("Animation variables")] [SerializeField] private Ease m_EaseOfScaleUp = Ease.InBack;
+    [Header("Animation variables")] [SerializeField] private Ease m_EaseOfScaleDown = Ease.OutBack;
+
+    [Header("Animation variables")] [SerializeField]
+    private float m_DurationOfScaleDown = 0.3f;
+
+    private void Start()
+    {
+        m_FullSizeScale = m_DialogueBox.lossyScale;
+    }  
     
     [Button()]
     private void TestDialogue()
     {
-        /*
-    public static Tweener DOShakeScale(
-      this Transform target,
-      float duration,
-      Vector3 strength,
-      int vibrato = 10,
-      float randomness = 90f,
-      bool fadeOut = true)
-      */
-        m_DialogueBox.localScale = new Vector3(11f, 11f, 11f);
-        m_DialogueBox.DOShakeScale(0.3f, new Vector3(30, 30, 30), 1);
+        m_DialogueBox.localScale = Vector3.zero;
+        Debug.Log(m_FullSizeScale);
+        m_DialogueBox.DOScale(m_FullSizeScale, m_DurationOfScaleUp).SetEase(m_EaseOfScaleUp);
         PlayDialogueText(m_SampleText);
     }
 
     private void Update()
     {
+        if (!m_IsDialogueOpen.Value) return;
         if (Input.GetMouseButtonDown(0))
         {
             MoveToNextPartInDialogue();
@@ -53,6 +58,8 @@ public class DialogueView : MonoBehaviour
         m_CurrentTextIndex++;
         if (m_CurrentTextIndex >= m_TextsToPlay.Length)
         {
+            m_DialogueBox.DOScale(Vector3.zero, m_DurationOfScaleDown).SetEase(m_EaseOfScaleUp);
+            m_IsDialogueOpen.Value = false;
             Debug.Log("STOP DIALOGUE");
             return;
         }
@@ -70,15 +77,13 @@ public class DialogueView : MonoBehaviour
 
     private IEnumerator TypeMachineText(string text)
     {
-        m_DialogueText.text = string.Empty;
+        m_DialogueText.text = text;
         m_IsAnimatingText = true;
         int numberOfLetters = text.Length;
-        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < numberOfLetters; i++)
         {
             yield return new WaitForSeconds(Random.Range(0.03f , 0.04f));
-            sb.Append(text[i]);
-            m_DialogueText.text = sb.ToString();
+            m_DialogueText.maxVisibleCharacters = i;
         }
 
         m_IsAnimatingText = false;
