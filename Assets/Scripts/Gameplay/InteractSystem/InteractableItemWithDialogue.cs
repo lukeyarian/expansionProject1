@@ -4,7 +4,8 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
 {
     [TextArea]
     [SerializeField] private string[] m_DefaultDialogue;
-    [SerializeField] private string[] m_SpecialDialoguesForInteractSuccessful;
+    [SerializeField] private string[] m_FantasyDialogue;
+    [SerializeField] protected string[] m_SpecialDialoguesForInteractSuccessful;
     
     [SerializeField] private InventoryItemType m_ItemItWantsForInteract;
     [SerializeField] private InventoryItemData m_InventoryItemThisCharacterCanGive;
@@ -21,10 +22,10 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     
     public void Interact()
     {
-        StartDialogue(m_DefaultDialogue , true);
+        StartDialogue(WorldChangeController.Instance.IsNormalWorld? m_DefaultDialogue : m_FantasyDialogue , true);
     }
 
-    public void InteractWithItem(InventoryItemType incomingItemType)
+    public virtual void InteractWithItem(InventoryItemType incomingItemType)
     {
         if (incomingItemType == m_ItemItWantsForInteract && incomingItemType != InventoryItemType.NONE)
         {
@@ -32,7 +33,7 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
         }
     }
 
-    private void StartDialogue(string[] dialogueToUse , bool isDefault)
+    protected void StartDialogue(string[] dialogueToUse , bool isDefault)
     {
         Debug.Log("START DIALOGUE");
         if (dialogueToUse == null || dialogueToUse.Length == 0 ||  m_DialogueIsShowing.Value) return;

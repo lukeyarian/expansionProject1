@@ -15,11 +15,13 @@ public class InteractionController : SingletonMono<InteractionController>
             
             if(hit.collider != null)
             {
+                Debug.Log(hit.collider.name);
                 IINteractable interactableClicked = null;
                 if (InventoryController.Instance.LastItemClickedOnUI == null)
                 {
                     Debug.Log("INteract simple");
                     interactableClicked = hit.collider.GetComponent<IINteractable>();
+                    Debug.Log(interactableClicked);
                     interactableClicked?.Interact();
                 }
                 else
