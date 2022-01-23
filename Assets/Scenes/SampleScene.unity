@@ -818,6 +818,8 @@ MonoBehaviour:
   m_Door: {fileID: 0}
   m_ClockCollider: {fileID: 218098489}
   m_FalseWordlColor: {r: 0.7264151, g: 0.4762816, b: 0.4762816, a: 1}
+  m_StuffThatExistInRealWorldOnly:
+  - {fileID: 218098490}
 --- !u!1 &294550021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,7 +1589,7 @@ MonoBehaviour:
     Integer maximus massa arcu, vel congue justo auctor eget. Praesent dapibus viverra
     placerat. Nam in dapibus magna.
   m_IsDialogueOpen: {fileID: 11400000, guid: eb2c5391a852bfa4daa8606a6af51f06, type: 2}
-  m_CatTransform: {fileID: 0}
+  m_CatTransform: {fileID: 462104425}
   m_DurationOfScaleUp: 0.6
   m_EaseOfScaleUp: 27
   m_EaseOfScaleDown: 27
@@ -2803,7 +2805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.16, y: 0}
+  m_AnchoredPosition: {x: -4.28, y: 3.12}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.94, y: 0}
 --- !u!223 &6048465663305272042
@@ -2825,7 +2827,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 10000
   m_TargetDisplay: 0
 --- !u!114 &6048465663305272043
 MonoBehaviour:
@@ -3001,7 +3003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 550, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6048465665127988878
