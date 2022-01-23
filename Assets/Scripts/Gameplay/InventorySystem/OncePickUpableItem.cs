@@ -1,4 +1,4 @@
-﻿public class PizzaItem : InventoryItem
+﻿public class OncePickUpableItem : InventoryItem
 {
     private bool m_HasAlreadyBeenPickedUp;
     

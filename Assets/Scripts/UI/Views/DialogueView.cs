@@ -36,6 +36,11 @@ public class DialogueView : SingletonMono<DialogueView>
     [SerializeField] private float m_MaxX;
     [SerializeField] private float m_MinX;
     [SerializeField] private float m_MaxY;
+    
+    [Header("Bubble sprites")] 
+    [SerializeField] private Sprite m_DefaultDialogue;
+    [SerializeField] private Sprite m_ThinkingDialogue;
+    [SerializeField] private Image m_DialogueBg;
 
     private void Start()
     {
@@ -94,11 +99,13 @@ public class DialogueView : SingletonMono<DialogueView>
 
     public void PlayDialogueOnCat(string[] text, Action onFinishDialogue)
     {
-        PlayDialogueText(text , onFinishDialogue , m_CatTransform.position);
+        PlayDialogueText(text , onFinishDialogue , m_CatTransform.position , true);
     }
 
-    public void PlayDialogueText(string[] text , Action onFinishDialogue , Vector3 positionOfObject)
+    public void PlayDialogueText(string[] text , Action onFinishDialogue , Vector3 positionOfObject , bool thinkingDialogue = false)
     {
+        m_DialogueBg.sprite = thinkingDialogue? m_ThinkingDialogue : m_DefaultDialogue;
+        m_DialogueText.color = thinkingDialogue ? Color.black : Color.white;
         Debug.Log("Play dialogue");
         m_DialogueBox.DOScale(m_FullSizeScale, m_DurationOfScaleUp).SetEase(m_EaseOfScaleUp);
         m_DialogueBox.transform.position = positionOfObject + m_OffsetOfBubble;

@@ -13,6 +13,7 @@ public class catController : MonoBehaviour
     [SerializeField] private Sprite m_FrontSprite;
     [SerializeField] private Sprite m_BackSprite;
     [SerializeField] private SpriteRenderer m_CatSpriteRenderer;
+    [SerializeField] private BoolVariable m_CanMove;
 
 
     void Awake()
@@ -26,6 +27,7 @@ public class catController : MonoBehaviour
 
     void Update()
     {
+        if (!m_CanMove.Value) return;
         bool didPressKey = false;
         if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {
