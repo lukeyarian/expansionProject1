@@ -11,6 +11,10 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
     
     [SerializeField] private SpriteRenderer[] m_StuffThatExistInRealWorldOnly;
     [SerializeField] private GameObject m_ClockGameObject;
+    
+    [Header("Background")]
+    [SerializeField] private Sprite m_RealWorldBg;
+    [SerializeField] private Sprite m_FakeWorldBg;
 
     private void Update()
     {
@@ -27,7 +31,7 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
         {
             m_ClockCollider.enabled = realWorld;
         }
-        m_Background.color = realWorld ? Color.white : m_FalseWordlColor;
+        //m_Background.color = realWorld ? Color.white : m_FalseWordlColor;
         SetRenderersDependingOnWorld(realWorld);
     }
 
@@ -38,5 +42,7 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
             if (m_StuffThatExistInRealWorldOnly[i] == null) continue;
             m_StuffThatExistInRealWorldOnly[i].enabled = realWorld;
         }
+
+        m_Background.sprite = realWorld ? m_RealWorldBg : m_FakeWorldBg;
     }
 }
