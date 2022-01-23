@@ -20,6 +20,10 @@ public class OncePickUpableItem : InventoryItem
 
     public override InventoryItemData PickUpItem()
     {
+        if (InventoryItemData.ItemType == InventoryItemType.KUVARI)
+        {
+            DialogueView.Instance.PlayDialogueOnCat(new [] {"Nice tangle ball"} , null);
+        }
         m_HasAlreadyBeenPickedUp = true;
         Destroy(gameObject);
         return base.PickUpItem();
