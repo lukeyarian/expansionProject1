@@ -78,7 +78,7 @@ public class catController : MonoBehaviour
             jumpReq = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && !didPressKey)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !didPressKey)
         {
             Debug.Log("SET BACK SPRITE");
             m_CatAnimator.enabled = false;
