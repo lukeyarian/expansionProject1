@@ -27,7 +27,12 @@ public class catController : MonoBehaviour
 
     void Update()
     {
-        if (!m_CanMove.Value) return;
+        if (!m_CanMove.Value)
+        {
+            rightReq = false;
+            leftReq = false;
+            return;
+        }
         bool didPressKey = false;
         if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {

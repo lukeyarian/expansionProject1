@@ -20,6 +20,7 @@ public class InteractableItemWithDialoguePlant : InteractableItemWithDialogue
         if (incomingItemType == InventoryItemType.SPIDER)
         {
             StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
+            EventConditionBooleans.HasGivenSpiderToPlant = true;
         }
     }
     

@@ -9,6 +9,6 @@ public static class EventConditionBooleans
     public static bool HasUsedTheClock = false;
     public static bool HasInteractedWithWindow = false;
     public static bool HasFinishedInteractionWithPlant = false;
-    public static bool HasFinishedInteractionWithSphere = false;
-    public static bool HasGivenFsitToWindow = false;
+    public static bool HasGivenSpiderToPlant = false;
+    public static bool HasFinishedInteractionWithCrystalBall = false;
 }

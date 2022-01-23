@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 230525371}
   - component: {fileID: 230525373}
   - component: {fileID: 230525372}
+  - component: {fileID: 230525374}
   m_Layer: 0
   m_Name: CrystalBall
   m_TagString: Untagged
@@ -751,6 +752,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &230525374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230525370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c54d1bc90deca4795f82f2f87eb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DefaultDialogue:
+  - Shiny ball!
+  m_FantasyDialogue:
+  - Spine it has but it does not walk. From nature it comes but it's not a part of
+    it.
+  m_SpecialDialoguesForInteractSuccessful: []
+  m_ItemItWantsForInteract: 0
+  m_InventoryItemThisCharacterCanGive: {fileID: 0}
+  m_ItemShouldBeGivenOnDefaultDialogue: 0
+  ShouldShowSpecialInteractDialogueOnCat: 1
+  ShouldShowRealWorldInteractOnCat: 1
 --- !u!1 &242314996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,7 +1725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462104420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.68, y: -2.9, z: 10.246182}
+  m_LocalPosition: {x: -1.31, y: -2.84, z: 10.246182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1394117549}
