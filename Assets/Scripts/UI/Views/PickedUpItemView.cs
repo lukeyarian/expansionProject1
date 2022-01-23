@@ -10,6 +10,6 @@ public class PickedUpItemView : MonoBehaviour
     public void SetView(Sprite spriteToSet, UnityAction buttonAction)
     {
         m_ImageOfBackground.sprite = spriteToSet;
-        m_WholeButton.SetClickAction(buttonAction);
+        m_WholeButton.SetClickAction(buttonAction + (() => MouseFollower.SetImage(m_ImageOfBackground.sprite)));
     }
 }

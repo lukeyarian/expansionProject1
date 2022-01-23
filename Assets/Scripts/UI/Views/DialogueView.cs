@@ -4,18 +4,21 @@ using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 using Random = UnityEngine.Random;
 
 public class DialogueView : SingletonMono<DialogueView>
 {
-    [SerializeField] private TextMeshPro m_DialogueText;
+    [SerializeField] private TextMeshProUGUI m_DialogueText;
     [SerializeField] private Transform m_DialogueBox;
     [TextArea]
     [SerializeField] private string[] m_SampleText;
     [SerializeField] private BoolVariable m_IsDialogueOpen;
     [SerializeField] private Transform m_CatTransform;
 
-    private Vector3 m_FullSizeScale;
+    private Vector3 m_FullSizeScale = Vector3.one * 0.001f;
+
     [Header("Animation variables")] [SerializeField] private float m_DurationOfScaleUp = 0.2f;
     [SerializeField] private Ease m_EaseOfScaleUp = Ease.InBack;
     [SerializeField] private Ease m_EaseOfScaleDown = Ease.OutBack;
@@ -109,6 +112,14 @@ public class DialogueView : SingletonMono<DialogueView>
         StartCoroutine(TypeMachineText(text[m_CurrentTextIndex]));
     }
     
+    void UpdateLayout() {
+		for (int i = 0; i < 2; i++) {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_DialogueBox.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_DialogueText.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_DialogueBox.GetComponent<RectTransform>());
+        }
+    }
+
     private void ConstrainPositionOfBubbleOnScreen()
     {
         if (m_DialogueBox.transform.position.y > m_MaxY)
@@ -133,6 +144,8 @@ public class DialogueView : SingletonMono<DialogueView>
     private IEnumerator TypeMachineText(string text)
     {
         m_DialogueText.text = text;
+        UpdateLayout();
+
         m_IsAnimatingText = true;
         int numberOfLetters = text.Length;
         m_DialogueText.maxVisibleCharacters = 0;
