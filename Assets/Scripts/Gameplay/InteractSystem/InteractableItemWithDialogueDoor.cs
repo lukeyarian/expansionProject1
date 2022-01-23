@@ -25,6 +25,7 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
     {
         if(incomingItemType.Equals(InventoryItemType.CLOCK) && !WorldChangeController.Instance.IsNormalWorld)
         {
+            AudioSystem.Instance.PlayAlarm();
             EventConditionBooleans.HasUsedTheClock = true;
             GameEventSystem.Current.RemoveInventoryItem(incomingItemType);
             m_DidInteractWithClock = true;
