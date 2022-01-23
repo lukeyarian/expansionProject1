@@ -1047,7 +1047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &354478327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tab: Change Worlds'
+  m_text: '<b>Tab</b>: Change Worlds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd67480aa631a794b914e19a96d63895, type: 2}
   m_sharedMaterial: {fileID: -8673700137460254883, guid: bd67480aa631a794b914e19a96d63895,
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &772335685
@@ -3086,7 +3086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Arrow Keys: Move character'
+  m_text: '<b>Arrow Keys</b>: Move character'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd67480aa631a794b914e19a96d63895, type: 2}
   m_sharedMaterial: {fileID: -8673700137460254883, guid: bd67480aa631a794b914e19a96d63895,
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1260142509
@@ -3397,7 +3397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mouse: Interact with environment/Use Item'
+  m_text: '<b>Mouse</b>: Interact with environment/Use Item'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd67480aa631a794b914e19a96d63895, type: 2}
   m_sharedMaterial: {fileID: -8673700137460254883, guid: bd67480aa631a794b914e19a96d63895,
@@ -3464,7 +3464,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1369742902
