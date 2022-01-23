@@ -26,6 +26,7 @@ public class InventoryController : SingletonMono<InventoryController>
 
     public void GiveItemToPlayer(InventoryItemType item)
     {
+        AudioSystem.Instance.PlayItemGotten();
         m_ItemsInInventory.Add(item);
     }
 }

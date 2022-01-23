@@ -35,6 +35,7 @@ public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
             m_HasBeenGivenFsit = true;
             if (m_HasBeenGivenHankerchief)
             {
+                AudioSystem.Instance.PlayWipeWindow();
                 didInteract = true;
                 StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
                 m_DidFinishGame = true;
@@ -51,6 +52,7 @@ public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
             m_HasBeenGivenHankerchief = true;
             if (m_HasBeenGivenFsit)
             {
+                AudioSystem.Instance.PlayWipeWindow();
                 didInteract = true;
                 StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
                 m_DidFinishGame = true;

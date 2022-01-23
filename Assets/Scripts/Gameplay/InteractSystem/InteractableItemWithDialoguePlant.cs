@@ -15,10 +15,12 @@ public class InteractableItemWithDialoguePlant : InteractableItemWithDialogue
         if (!EventConditionBooleans.HasInteractedWithWindow || WorldChangeController.Instance.IsNormalWorld) return;
         if (incomingItemType == InventoryItemType.PIZZA)
         {
+            AudioSystem.Instance.PlayEatPlant();
             StartDialogue(m_DialoguesForPizza , false);
         }
         if (incomingItemType == InventoryItemType.SPIDER)
         {
+            AudioSystem.Instance.PlayEatPlant();
             StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
             EventConditionBooleans.HasGivenSpiderToPlant = true;
         }
