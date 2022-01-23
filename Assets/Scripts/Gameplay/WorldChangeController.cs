@@ -2,13 +2,14 @@
 
 public class WorldChangeController : SingletonMono<WorldChangeController>
 {
-    public bool IsNormalWorld;
+    public bool IsNormalWorld = true;
 
     [SerializeField] private SpriteRenderer m_Background;
     [SerializeField] private BoxCollider2D m_ClockCollider;
     [SerializeField] private Color m_FalseWordlColor;
     
     [SerializeField] private SpriteRenderer[] m_StuffThatExistInRealWorldOnly;
+    [SerializeField] private SpriteRenderer[] m_StuffThatExistsInFakeWorldOnly;
     [SerializeField] private GameObject m_ClockGameObject;
     
     [Header("Background")]
@@ -19,6 +20,11 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
     [SerializeField] private SpriteRenderer m_Plant;
     [SerializeField] private Sprite m_SpritePlantReal;
     [SerializeField] private Sprite m_SpritePlantFake;
+    
+    [Header("Window")]
+    [SerializeField] private SpriteRenderer m_Window;
+    [SerializeField] private Sprite m_FakeWindow;
+    [SerializeField] private Sprite m_RealWindow;
     
     [Header("LeftDoor")]
     [SerializeField] private SpriteRenderer m_Door;
@@ -53,8 +59,14 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
             if (m_StuffThatExistInRealWorldOnly[i] == null) continue;
             m_StuffThatExistInRealWorldOnly[i].enabled = realWorld;
         }
+        for (int i = 0; i < m_StuffThatExistsInFakeWorldOnly.Length; i++)
+        {
+            if (m_StuffThatExistsInFakeWorldOnly[i] == null) continue;
+            m_StuffThatExistsInFakeWorldOnly[i].enabled = !realWorld;
+        }
 
         m_Background.sprite = realWorld ? m_RealWorldBg : m_FakeWorldBg;
         m_Plant.sprite = realWorld ? m_SpritePlantReal : m_SpritePlantFake;
+        m_Window.sprite = realWorld ? m_RealWindow : m_FakeWindow;
     }
 }

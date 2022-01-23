@@ -10,8 +10,15 @@ public class OncePickUpableItem : InventoryItem
         {
             return false;
         }
-        Debug.Log(EventConditionBooleans.HasFinishedInteractionWithPlant);
         if (InventoryItemData.ItemType == InventoryItemType.SPIDER && !EventConditionBooleans.HasFinishedInteractionWithPlant)
+        {
+            return false;
+        }
+        if (InventoryItemData.ItemType == InventoryItemType.FSIT && !WorldChangeController.Instance.IsNormalWorld)
+        {
+            return false;
+        }
+        if (InventoryItemData.ItemType == InventoryItemType.SPIDER && !WorldChangeController.Instance.IsNormalWorld)
         {
             return false;
         }
@@ -20,6 +27,7 @@ public class OncePickUpableItem : InventoryItem
 
     public override InventoryItemData PickUpItem()
     {
+        Debug.Log("PICK UP " + InventoryItemData.ItemType);
         if (InventoryItemData.ItemType == InventoryItemType.KUVARI)
         {
             DialogueView.Instance.PlayDialogueOnCat(new [] {"Nice tangle ball"} , null);
