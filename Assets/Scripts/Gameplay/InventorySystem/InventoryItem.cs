@@ -6,7 +6,8 @@ public enum InventoryItemType
     CLOCK,
     PIZZA,
     SPIDER,
-    FSIT
+    FSIT,
+    PETSETAKI,
 }
 
 public interface PickUpAble
