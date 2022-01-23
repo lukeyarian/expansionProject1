@@ -13,6 +13,5 @@
     protected override void FinishDialogue(bool isDefault)
     {
         base.FinishDialogue(isDefault);
-        EventConditionBooleans.HasFinishedInteractionWithPlant = true;
     }
 }
