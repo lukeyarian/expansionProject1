@@ -80,7 +80,6 @@ public class catController : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !didPressKey)
         {
-            Debug.Log("SET BACK SPRITE");
             m_CatAnimator.enabled = false;
             m_CatSpriteRenderer.sprite = m_BackSprite;
         }

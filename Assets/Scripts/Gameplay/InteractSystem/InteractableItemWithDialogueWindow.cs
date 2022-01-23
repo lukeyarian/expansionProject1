@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
 {
@@ -6,6 +7,7 @@ public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
     [SerializeField] private string[] m_TextOnFsitNoHankerchief;
     [SerializeField] private string[] m_TextsForWantFsit;
     [SerializeField] private string[] m_TextsForWantHankerchief;
+    [SerializeField] private CanvasGroup m_FinalScreen;
     private bool m_DidFinishGame = false;
     private bool m_HasBeenGivenHankerchief;
     private bool m_HasBeenGivenFsit;
@@ -76,6 +78,7 @@ public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
         EventConditionBooleans.HasInteractedWithWindow = true;
         if (m_DidFinishGame)
         {
+            m_FinalScreen.DOFade(1, 0.3f);
             Debug.Log("FINISHED GAME");
         }
     }
