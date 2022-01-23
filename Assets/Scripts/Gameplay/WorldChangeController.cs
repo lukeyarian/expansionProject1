@@ -5,7 +5,6 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
     public bool IsNormalWorld;
 
     [SerializeField] private SpriteRenderer m_Background;
-    [SerializeField] private SpriteRenderer m_Door;
     [SerializeField] private BoxCollider2D m_ClockCollider;
     [SerializeField] private Color m_FalseWordlColor;
     
@@ -15,6 +14,18 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
     [Header("Background")]
     [SerializeField] private Sprite m_RealWorldBg;
     [SerializeField] private Sprite m_FakeWorldBg;
+    
+    [Header("Robert")]
+    [SerializeField] private SpriteRenderer m_Plant;
+    [SerializeField] private Sprite m_SpritePlantReal;
+    [SerializeField] private Sprite m_SpritePlantFake;
+    
+    [Header("LeftDoor")]
+    [SerializeField] private SpriteRenderer m_Door;
+    [SerializeField] private Sprite m_RealWorldClosed;
+    [SerializeField] private Sprite m_REalWorldOpen;
+    [SerializeField] private Sprite m_FakeWorldClosed;
+    [SerializeField] private Sprite m_FakeWorldOpen;
 
     private void Update()
     {
@@ -44,5 +55,6 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
         }
 
         m_Background.sprite = realWorld ? m_RealWorldBg : m_FakeWorldBg;
+        m_Plant.sprite = realWorld ? m_SpritePlantReal : m_SpritePlantFake;
     }
 }
