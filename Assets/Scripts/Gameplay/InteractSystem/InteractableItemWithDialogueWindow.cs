@@ -79,6 +79,8 @@ public class InteractableItemWithDialogueWindow : InteractableItemWithDialogue
         if (m_DidFinishGame)
         {
             m_FinalScreen.DOFade(1, 0.3f);
+            m_FinalScreen.interactable = true;
+            m_FinalScreen.blocksRaycasts = true;
             Debug.Log("FINISHED GAME");
         }
     }
