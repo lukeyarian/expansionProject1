@@ -2,7 +2,7 @@
 {
     public override void Interact()
     {
-        if (!EventConditionBooleans.HasGivenSpiderToPlant) return;
+        if (!EventConditionBooleans.HasGivenSpiderToPlant || WorldChangeController.Instance.IsNormalWorld) return;
         StartDialogue(WorldChangeController.Instance.IsNormalWorld? m_DefaultDialogue : m_FantasyDialogue , true);
     }
     

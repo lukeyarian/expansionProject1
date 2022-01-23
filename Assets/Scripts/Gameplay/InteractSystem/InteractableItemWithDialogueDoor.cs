@@ -28,6 +28,8 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
             AudioSystem.Instance.PlayAlarm();
             EventConditionBooleans.HasUsedTheClock = true;
             GameEventSystem.Current.RemoveInventoryItem(incomingItemType);
+            EventConditionBooleans.HasOpenedDoor = true;
+            WorldChangeController.Instance.SetDoorState(WorldChangeController.Instance.IsNormalWorld);
             m_DidInteractWithClock = true;
             StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
         }

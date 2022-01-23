@@ -27,11 +27,16 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
     [SerializeField] private Sprite m_RealWindow;
     
     [Header("LeftDoor")]
-    [SerializeField] private SpriteRenderer m_Door;
-    [SerializeField] private Sprite m_RealWorldClosed;
-    [SerializeField] private Sprite m_REalWorldOpen;
-    [SerializeField] private Sprite m_FakeWorldClosed;
-    [SerializeField] private Sprite m_FakeWorldOpen;
+    [SerializeField] private SpriteRenderer m_DoorOuter;
+    [SerializeField] private Sprite m_RealWorldDoorOuter;
+    [SerializeField] private Sprite m_FakeWorldDoorOuter;
+    
+    [Header("LeftDoorInner")]
+    [SerializeField] private SpriteRenderer m_DoorInner;
+    [SerializeField] private Sprite m_RealWorldInnerOpen;
+    [SerializeField] private Sprite m_RealWorldInnerClosed;
+    [SerializeField] private Sprite m_FakeWorldInnerOpen;
+    [SerializeField] private Sprite m_FakeWorldInnerClosed;
 
     private void Update()
     {
@@ -68,5 +73,20 @@ public class WorldChangeController : SingletonMono<WorldChangeController>
         m_Background.sprite = realWorld ? m_RealWorldBg : m_FakeWorldBg;
         m_Plant.sprite = realWorld ? m_SpritePlantReal : m_SpritePlantFake;
         m_Window.sprite = realWorld ? m_RealWindow : m_FakeWindow;
+        m_DoorOuter.sprite = realWorld ? m_RealWorldDoorOuter : m_FakeWorldDoorOuter;
+        SetDoorState(realWorld);
+    }
+
+    public void SetDoorState(bool isRealWorld)
+    {
+        bool isDoorOpen = EventConditionBooleans.HasOpenedDoor;
+        if (isRealWorld)
+        {
+            m_DoorInner.sprite = isDoorOpen ? m_RealWorldInnerOpen : m_RealWorldInnerClosed;
+        }
+        else
+        {
+            m_DoorInner.sprite = isDoorOpen ? m_FakeWorldInnerOpen : m_FakeWorldInnerClosed;
+        }
     }
 }
