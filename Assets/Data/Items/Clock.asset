@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Clock
   m_EditorClassIdentifier: 
   ItemType: 1
-  ItemImageOnUI: {fileID: 21300000, guid: e83f194ac370fe64d98d076cf5b681a5, type: 3}
+  ItemImageOnUI: {fileID: 21300000, guid: 93cb45a31d47cf342af132c52a481234, type: 3}

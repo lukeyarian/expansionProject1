@@ -21,6 +21,7 @@ public class OncePickUpableItem : InventoryItem
     public override InventoryItemData PickUpItem()
     {
         m_HasAlreadyBeenPickedUp = true;
+        Destroy(gameObject);
         return base.PickUpItem();
     }
 }

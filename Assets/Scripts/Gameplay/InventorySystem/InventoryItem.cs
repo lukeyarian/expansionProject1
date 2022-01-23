@@ -8,6 +8,7 @@ public enum InventoryItemType
     SPIDER,
     FSIT,
     PETSETAKI,
+    KUVARI
 }
 
 public interface PickUpAble

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ajax
   m_EditorClassIdentifier: 
   ItemType: 4
-  ItemImageOnUI: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  ItemImageOnUI: {fileID: 21300000, guid: 7e0792adf0467a4449d4efc9cbb40bcb, type: 3}
