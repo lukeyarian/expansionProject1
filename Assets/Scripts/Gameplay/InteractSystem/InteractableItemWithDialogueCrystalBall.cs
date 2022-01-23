@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class InteractableItemWithDialogueCrystalBall : InteractableItemWithDialogue 
+﻿public class InteractableItemWithDialogueCrystalBall : InteractableItemWithDialogue 
 {
     public override void Interact()
     {
