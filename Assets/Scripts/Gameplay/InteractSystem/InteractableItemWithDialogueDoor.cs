@@ -30,5 +30,9 @@ public class InteractableItemWithDialogueDoor : InteractableItemWithDialogue
             m_DidInteractWithClock = true;
             StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
         }
+        else
+        {
+            DialogueView.Instance.PlayGenericCantDoAnythingDialogue();
+        }
     }
 }

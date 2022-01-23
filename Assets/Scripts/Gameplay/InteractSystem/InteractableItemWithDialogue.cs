@@ -13,6 +13,8 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     
     protected BoolVariable m_CanPlayerMove;
     protected BoolVariable m_DialogueIsShowing;
+    public bool ShouldShowSpecialInteractDialogueOnCat = true;
+    public bool ShouldShowRealWorldInteractOnCat = true;
 
     private void Start()
     {
@@ -22,23 +24,30 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     
     public virtual void Interact()
     {
-        StartDialogue(WorldChangeController.Instance.IsNormalWorld? m_DefaultDialogue : m_FantasyDialogue , true);
+        StartDialogue(WorldChangeController.Instance.IsNormalWorld? m_DefaultDialogue : m_FantasyDialogue , true , WorldChangeController.Instance.IsNormalWorld);
     }
 
     public virtual void InteractWithItem(InventoryItemType incomingItemType)
     {
         if (incomingItemType == m_ItemItWantsForInteract && incomingItemType != InventoryItemType.NONE)
         {
-            StartDialogue(m_SpecialDialoguesForInteractSuccessful , false);
+            StartDialogue(m_SpecialDialoguesForInteractSuccessful , false , WorldChangeController.Instance.IsNormalWorld);
         }
     }
 
-    protected void StartDialogue(string[] dialogueToUse , bool isDefault)
+    protected void StartDialogue(string[] dialogueToUse , bool isDefault , bool showOnCat = false)
     {
         Debug.Log("START DIALOGUE");
         if (dialogueToUse == null || dialogueToUse.Length == 0 ||  m_DialogueIsShowing.Value) return;
         m_CanPlayerMove.Value = false;
-        DialogueView.Instance.PlayDialogueText(dialogueToUse, ()=>FinishDialogue(isDefault) , transform.position);
+        if (showOnCat)
+        {
+            DialogueView.Instance.PlayDialogueOnCat(dialogueToUse, ()=>FinishDialogue(isDefault));
+        }
+        else
+        {
+            DialogueView.Instance.PlayDialogueText(dialogueToUse, ()=>FinishDialogue(isDefault) , transform.position);
+        }
     }
 
     protected virtual void FinishDialogue(bool isDefault)
