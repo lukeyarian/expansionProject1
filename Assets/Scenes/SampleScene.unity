@@ -2368,7 +2368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &637054975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3541,7 +3541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Arrow Keys</b>: Move character'
+  m_text: '<b>Arrow Keys/AWSD</b>: Move character'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42ab104c7354d9b4daf05cf1533341e6, type: 2}
   m_sharedMaterial: {fileID: 4627782222437038210, guid: 42ab104c7354d9b4daf05cf1533341e6,
