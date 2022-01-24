@@ -6,11 +6,7 @@ public class OncePickUpableItem : InventoryItem
     
     public override bool CanBePickedUp()
     {
-        if (InventoryItemData.ItemType == InventoryItemType.PETSETAKI && !EventConditionBooleans.HasFinishedInteractionWithPlant)
-        {
-            return false;
-        }
-        if (InventoryItemData.ItemType == InventoryItemType.SPIDER && !EventConditionBooleans.HasFinishedInteractionWithPlant)
+        if (InventoryItemData.ItemType == InventoryItemType.PETSETAKI && (!EventConditionBooleans.HasFinishedInteractionWithCrystalBall || !WorldChangeController.Instance.IsNormalWorld))
         {
             return false;
         }
@@ -18,7 +14,8 @@ public class OncePickUpableItem : InventoryItem
         {
             return false;
         }
-        if (InventoryItemData.ItemType == InventoryItemType.SPIDER && !WorldChangeController.Instance.IsNormalWorld)
+
+        if (InventoryItemData.ItemType == InventoryItemType.SPIDER && (!WorldChangeController.Instance.IsNormalWorld || !EventConditionBooleans .HasFinishedInteractionWithPlant)) 
         {
             return false;
         }
