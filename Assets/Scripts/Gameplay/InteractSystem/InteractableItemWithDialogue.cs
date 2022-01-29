@@ -15,6 +15,7 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
     protected BoolVariable m_DialogueIsShowing;
     public bool ShouldShowSpecialInteractDialogueOnCat = true;
     public bool ShouldShowRealWorldInteractOnCat = true;
+    public static bool CanShowDialogues = false;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class InteractableItemWithDialogue : MonoBehaviour , IINteractable
 
     protected void StartDialogue(string[] dialogueToUse , bool isDefault , bool showOnCat = false)
     {
-        Debug.Log("START DIALOGUE");
+        if (!CanShowDialogues) return;
         if (dialogueToUse == null || dialogueToUse.Length == 0 ||  m_DialogueIsShowing.Value) return;
         m_CanPlayerMove.Value = false;
         if (showOnCat)

@@ -8,6 +8,10 @@ public class StartingMenu : MonoBehaviour
     
     void Start()
     {
-        WholeScreenButton.SetClickAction(()=>WholeCanvas.enabled = false);
+        WholeScreenButton.SetClickAction(()=>
+        {
+            InteractableItemWithDialogue.CanShowDialogues = true;
+            WholeCanvas.enabled = false;
+        });
     }
 }
